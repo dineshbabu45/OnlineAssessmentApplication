@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using Online_Assessment_Project.DomainModel;
-using Online_Assessment_Project.Repository;
-using Online_Assessment_Project.ViewModel;
+using OnlineAssessmentProject.DomainModel;
+using OnlineAssessmentProject.Repository;
+using OnlineAssessmentProject.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Online_Assessment_Project.ServiceLayer
+namespace OnlineAssessmentProject.ServiceLayer
 {
-    public interface IUserServices
+    public interface IUserService
     {
         UserViewModel ValidateUser(UserViewModel user);
         void Create(User user);
@@ -18,10 +18,10 @@ namespace Online_Assessment_Project.ServiceLayer
         void Update(User user);
         List<User> Display();
     }
-    public class UserServices : IUserServices
+    public class UserService : IUserService
     {
-        IUserRepository userRepository;
-        public UserServices()
+        readonly IUserRepository userRepository;
+        public UserService()
         {
             userRepository = new UserRepository();
         }

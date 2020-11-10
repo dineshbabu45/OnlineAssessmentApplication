@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
-using Online_Assessment_Project.DomainModel;
-using Online_Assessment_Project.Repository;
-using Online_Assessment_Project.ViewModel;
-using System;
+using OnlineAssessmentProject.DomainModel;
+using OnlineAssessmentProject.Repository;
+using OnlineAssessmentProject.ViewModel;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Online_Assessment_Project.ServiceLayer
+namespace OnlineAssessmentProject.ServiceLayer
 {
     public interface IQuestionServices
     {

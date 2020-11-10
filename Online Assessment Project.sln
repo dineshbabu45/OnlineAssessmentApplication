@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Assessment Project", "Online Assessment Project\Online Assessment Project.csproj", "{8F03C96B-2BEB-4743-9EE7-04B68F42D6E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAssessmentProject", "Online Assessment Project\OnlineAssessmentProject.csproj", "{8F03C96B-2BEB-4743-9EE7-04B68F42D6E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Assessment Project.DomainModel", "Online Assessment Project.DomainModel\Online Assessment Project.DomainModel.csproj", "{175C4384-6135-4C05-8D74-479687F7B544}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAssessmentProject.DomainModel", "Online Assessment Project.DomainModel\OnlineAssessmentProject.DomainModel.csproj", "{175C4384-6135-4C05-8D74-479687F7B544}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Assessment Project.ViewModel", "Online Assessment Project.ViewModel\Online Assessment Project.ViewModel.csproj", "{2C7CE6F8-36CB-4CA7-87C3-539F347204BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAssessmentProject.ViewModel", "Online Assessment Project.ViewModel\OnlineAssessmentProject.ViewModel.csproj", "{2C7CE6F8-36CB-4CA7-87C3-539F347204BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Assessment Project.ServiceLayer", "Online Assessment Project.ServiceLayer\Online Assessment Project.ServiceLayer.csproj", "{0B758FFE-E9F7-4DAB-B742-AEA17DEC94BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAssessmentProject.ServiceLayer", "Online Assessment Project.ServiceLayer\OnlineAssessmentProject.ServiceLayer.csproj", "{0B758FFE-E9F7-4DAB-B742-AEA17DEC94BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Assessment Project.Repository", "Online Assessment Project.Repository\Online Assessment Project.Repository.csproj", "{331C807A-D6C5-412E-AEDF-90C0E5522DC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAssessmentProject.Repository", "Online Assessment Project.Repository\OnlineAssessmentProject.Repository.csproj", "{331C807A-D6C5-412E-AEDF-90C0E5522DC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

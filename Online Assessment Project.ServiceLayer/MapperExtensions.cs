@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Online_Assessment_Project.ServiceLayer
+namespace OnlineAssessmentProject.ServiceLayer
 {
     public static class MapperExtensions
     {

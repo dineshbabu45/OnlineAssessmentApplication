@@ -68,6 +68,9 @@
     </Reference>
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -88,6 +91,15 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.4.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.4.0\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -254,6 +266,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -277,6 +290,7 @@
     <Content Include="Views\Error\ErrorView.cshtml" />
     <Content Include="Views\Shared\_SecondLayout.cshtml" />
     <Content Include="Views\Test\CreateTest.cshtml" />
+    <Content Include="Views\Test\EditTest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -290,17 +304,17 @@
     <Folder Include="Views\Question\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Online Assessment Project.DomainModel\Online Assessment Project.DomainModel.csproj">
+    <ProjectReference Include="..\Online Assessment Project.DomainModel\OnlineAssessmentProject.DomainModel.csproj">
       <Project>{175C4384-6135-4C05-8D74-479687F7B544}</Project>
-      <Name>Online Assessment Project.DomainModel</Name>
+      <Name>OnlineAssessmentProject.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Online Assessment Project.ServiceLayer\Online Assessment Project.ServiceLayer.csproj">
+    <ProjectReference Include="..\Online Assessment Project.ServiceLayer\OnlineAssessmentProject.ServiceLayer.csproj">
       <Project>{0b758ffe-e9f7-4dab-b742-aea17dec94be}</Project>
-      <Name>Online Assessment Project.ServiceLayer</Name>
+      <Name>OnlineAssessmentProject.ServiceLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Online Assessment Project.ViewModel\Online Assessment Project.ViewModel.csproj">
+    <ProjectReference Include="..\Online Assessment Project.ViewModel\OnlineAssessmentProject.ViewModel.csproj">
       <Project>{2c7ce6f8-36cb-4ca7-87c3-539f347204bb}</Project>
-      <Name>Online Assessment Project.ViewModel</Name>
+      <Name>OnlineAssessmentProject.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

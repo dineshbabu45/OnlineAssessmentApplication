@@ -1,11 +1,11 @@
-﻿using Online_Assessment_Project.DomainModel;
-using Online_Assessment_Project.ViewModel;
+﻿using OnlineAssessmentProject.DomainModel;
+using OnlineAssessmentProject.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Online_Assessment_Project.Repository
+namespace OnlineAssessmentProject.Repository
 {
     public interface IUserRepository
     {

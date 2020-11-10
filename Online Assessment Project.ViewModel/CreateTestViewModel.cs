@@ -1,25 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Online_Assessment_Project.ViewModel
+namespace OnlineAssessmentProject.ViewModel
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CreateTestViewModel
     {
         public int TestId { get; set; }
-        [Required]
+        public int UserId { get; set; }
+        
         [Display(Name = "Name of the Test")]
+        [Required(ErrorMessage = "Test name is required.")]
         public string TestName { get; set; }
         public string Status { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Date is required.")]
+        [Display(Name = "Date")]
         public string TestDate { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Subject is required.")]
         public string Subject { get; set; }
+        [Required(ErrorMessage = "Choose Start Time")]
         [Display(Name = "Start Time")]
         public string StartTime { get; set; }
+        [Required(ErrorMessage = "Choose End Time")]
         [Display(Name = "End Time")]
         public string EndTime { get; set; }
 

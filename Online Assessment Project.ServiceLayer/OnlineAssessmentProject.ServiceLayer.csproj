@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{331C807A-D6C5-412E-AEDF-90C0E5522DC1}</ProjectGuid>
+    <ProjectGuid>{0B758FFE-E9F7-4DAB-B742-AEA17DEC94BE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Online_Assessment_Project.Repository</RootNamespace>
-    <AssemblyName>Online Assessment Project.Repository</AssemblyName>
+    <RootNamespace>Online_Assessment_Project.ServiceLayer</RootNamespace>
+    <AssemblyName>Online Assessment Project.ServiceLayer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,20 +54,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionRepository.cs" />
-    <Compile Include="RoleRepository.cs" />
-    <Compile Include="TestRepository.cs" />
-    <Compile Include="UserRepository.cs" />
+    <Compile Include="QuestionService.cs" />
+    <Compile Include="RoleService.cs" />
+    <Compile Include="TestService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Online Assessment Project.DomainModel\Online Assessment Project.DomainModel.csproj">
+    <ProjectReference Include="..\Online Assessment Project.DomainModel\OnlineAssessmentProject.DomainModel.csproj">
       <Project>{175c4384-6135-4c05-8d74-479687f7b544}</Project>
-      <Name>Online Assessment Project.DomainModel</Name>
+      <Name>OnlineAssessmentProject.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Online Assessment Project.ViewModel\Online Assessment Project.ViewModel.csproj">
-      <Project>{2C7CE6F8-36CB-4CA7-87C3-539F347204BB}</Project>
-      <Name>Online Assessment Project.ViewModel</Name>
+    <ProjectReference Include="..\Online Assessment Project.Repository\OnlineAssessmentProject.Repository.csproj">
+      <Project>{331C807A-D6C5-412E-AEDF-90C0E5522DC1}</Project>
+      <Name>OnlineAssessmentProject.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Online Assessment Project.ViewModel\OnlineAssessmentProject.ViewModel.csproj">
+      <Project>{2c7ce6f8-36cb-4ca7-87c3-539f347204bb}</Project>
+      <Name>OnlineAssessmentProject.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

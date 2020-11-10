@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="CreateTestViewModel.cs" />
     <Compile Include="CreateViewModel.cs" />
+    <Compile Include="EditTestViewModel.cs" />
+    <Compile Include="LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionsViewModel.cs" />
     <Compile Include="RoleViewModel.cs" />
@@ -51,9 +53,9 @@
     <Compile Include="UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Online Assessment Project.DomainModel\Online Assessment Project.DomainModel.csproj">
+    <ProjectReference Include="..\Online Assessment Project.DomainModel\OnlineAssessmentProject.DomainModel.csproj">
       <Project>{175C4384-6135-4C05-8D74-479687F7B544}</Project>
-      <Name>Online Assessment Project.DomainModel</Name>
+      <Name>OnlineAssessmentProject.DomainModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

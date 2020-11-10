@@ -1,4 +1,4 @@
-﻿using Online_Assessment_Project.DomainModel;
+﻿using OnlineAssessmentProject.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Online_Assessment_Project.ViewModel
+namespace OnlineAssessmentProject.ViewModel
 {
     public class CreateViewModel
     {

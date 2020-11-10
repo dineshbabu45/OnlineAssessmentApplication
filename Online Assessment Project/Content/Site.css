@@ -79,3 +79,6 @@ textarea {
     text-align: center;
     font-size: xx-large;
 }
+.errorSpan{
+    color:red;
+}

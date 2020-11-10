@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace Online_Assessment_Project.App_Start
+namespace OnlineAssessmentProject.App_Start
 {
     public class BundleConfig
     {

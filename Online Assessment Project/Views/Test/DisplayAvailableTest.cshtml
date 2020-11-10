@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Online_Assessment_Project.DomainModel.Test>
+﻿@model IEnumerable<OnlineAssessmentProject.ViewModel.TestViewModel>
 
 @{
     ViewBag.Title = "DisplayAvailableTest";
@@ -7,7 +7,7 @@
 <h2>DisplayAvailableTest</h2>
 
 <p>
-    @Html.ActionLink("Create", "Display", "Test", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create", "CreateTest", "Test", new { @class = "btn btn-primary" })
 </p>
 
 @using (Html.BeginForm("DisplayAvailableTest", "Test", FormMethod.Get))
@@ -28,10 +28,10 @@
             @Html.DisplayNameFor(model => model.Subject)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TestStartTime)
+            @Html.DisplayNameFor(model => model.StartTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TestEndTime)
+            @Html.DisplayNameFor(model => model.EndTime)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Grade)
@@ -53,16 +53,16 @@
                 @Html.DisplayFor(modelItem => item.Subject)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TestStartTime)
+                @Html.DisplayFor(modelItem => item.StartTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TestEndTime)
+                @Html.DisplayFor(modelItem => item.EndTime)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Grade)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Display", "Test", new { @class = "btn btn-primary" })
+                @Html.ActionLink("Edit", "EditTest", new { testId=item.TestId})
                 @Html.ActionLink("Delete", "Display", "Test", new { @class = "btn btn-primary" })
             </td>
         </tr>

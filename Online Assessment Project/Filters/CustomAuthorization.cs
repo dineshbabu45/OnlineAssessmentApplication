@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Online_Assessment_Project.Filters
+namespace OnlineAssessmentProject.Filters
 {
     public class CustomAuthorization : AuthorizeAttribute
     {

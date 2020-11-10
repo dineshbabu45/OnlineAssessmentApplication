@@ -1,21 +1,20 @@
-﻿using Online_Assessment_Project.DomainModel;
+﻿using OnlineAssessmentProject.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Online_Assessment_Project.Repository
+namespace OnlineAssessmentProject.Repository
 {
-    interface ITestRepository
+    public interface ITestRepository
     {
-        IEnumerable<Test> DisplayAllDetails(string search);
+        IEnumerable<Test> DisplayAllDetails();
         void CreateNewTest(Test test);
         Test GetTestByTestId(int testId);
+        void UpdateTest(Test editTest);
     }
     public class TestRepository : ITestRepository
     {
-        AssessmentPortalDbContext db;
+        readonly AssessmentPortalDbContext db;
         public TestRepository()
         {
             db = new AssessmentPortalDbContext();
@@ -27,6 +26,26 @@ namespace Online_Assessment_Project.Repository
             db.SaveChanges();
 
         }
+
+        public void UpdateTest(Test editTest)
+        {
+            editTest.ModifiedTime = DateTime.Now.ToString();
+            Test test = db.Tests.Find(editTest.TestId);
+            if (test != null)
+            {
+                test.TestId = editTest.TestId;
+                test.TestName =editTest.TestName;
+                test.TestDate = editTest.TestDate;
+                test.StartTime = editTest.StartTime;
+                test.EndTime = editTest.EndTime;
+                test.Grade = editTest.Grade;
+                test.Subject = editTest.Subject;
+                
+                test.ModifiedTime = editTest.ModifiedTime;
+                db.SaveChanges();
+            }
+
+        }
         public Test GetTestByTestId(int testId)
         {
             return db.Tests.Find(testId);
@@ -34,11 +53,10 @@ namespace Online_Assessment_Project.Repository
     
 
     
-        public IEnumerable<Test> DisplayAllDetails(string search)
+        public IEnumerable<Test> DisplayAllDetails()
         {
-            
-                IEnumerable<Test> tests =db.Tests.Where(test => test.Subject.Contains(search) || search == null).ToList();
-                return tests;
+            IEnumerable<Test> allTests = db.Tests.OrderByDescending(temp => temp.TestDate).ToList();
+            return allTests;
             
         }
     }

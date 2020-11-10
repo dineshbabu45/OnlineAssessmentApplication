@@ -1,11 +1,8 @@
-﻿using Online_Assessment_Project.DomainModel;
-using System;
+﻿using OnlineAssessmentProject.DomainModel;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Online_Assessment_Project.Repository
+namespace OnlineAssessmentProject.Repository
 {
     public interface IRoleRepository
     {

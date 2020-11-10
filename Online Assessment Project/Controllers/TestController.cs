@@ -1,41 +1,56 @@
-﻿using Online_Assessment_Project.DomainModel;
-using Online_Assessment_Project.ServiceLayer;
-using Online_Assessment_Project.ViewModel;
+﻿using OnlineAssessmentProject.ServiceLayer;
+using OnlineAssessmentProject.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace Online_Assessment_Project.Controllers
+namespace OnlineAssessmentProject.Controllers
 {
     public class TestController : Controller
     {
-        ITestServices testServices;
+        readonly ITestService testService;
         
-        public TestController()
+        public TestController(ITestService testService)
         {
-            testServices = new TestServices();
+            this.testService=testService;
         }
         // GET: Test
+        
         public ActionResult CreateTest()
         {
 
             return View();
         }
         [HttpPost]
-        public ActionResult CreateTest(CreateTestViewModel newTest)
+        [ActionName("CreateTest")]
+        public ActionResult SaveTest(CreateTestViewModel newTest)//Create Test
         {
-
+            newTest.UserId = Convert.ToInt32(Session["CurrentUserID"]);
             if (ModelState.IsValid)
             {
-                testServices.CreateNewTest(newTest);
+                testService.CreateNewTest(newTest);
             }
             return View();
         }
-        public ActionResult DisplayAvailableTest(string search)
+        public ActionResult EditTest(int testId)
         {
-            IEnumerable<Test> test = testServices.DisplayAllDetails(search);
+            
+            TestViewModel test = testService.GetTestByTestId(testId);
+            return View(test);
+        }
+        [HttpPost]
+        public ActionResult EditTest(EditTestViewModel editedData)
+        {
+            if (ModelState.IsValid)
+            {
+                editedData.UserId = Convert.ToInt32(Session["CurrentUserID"]);
+                testService.UpdateTest(editedData);
+            }
+                return RedirectToAction("DisplayAvailableTest");
+        }
+        public ActionResult DisplayAvailableTest()
+        {
+            IEnumerable<TestViewModel> test = testService.DisplayAllDetails();
             return View(test);
         }
         public ActionResult Display()

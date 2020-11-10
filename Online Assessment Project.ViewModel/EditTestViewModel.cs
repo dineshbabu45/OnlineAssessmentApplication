@@ -2,7 +2,7 @@
 
 namespace OnlineAssessmentProject.ViewModel
 {
-    public class TestViewModel
+    public class EditTestViewModel
     {
         public int TestId { get; set; }
         public int UserId { get; set; }

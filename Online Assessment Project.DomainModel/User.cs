@@ -1,9 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace Online_Assessment_Project.DomainModel
+namespace OnlineAssessmentProject.DomainModel
 {
     public class User
     {

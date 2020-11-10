@@ -1,26 +1,26 @@
 ﻿using AutoMapper;
-using Online_Assessment_Project.DomainModel;
-using Online_Assessment_Project.Filters;
-using Online_Assessment_Project.ServiceLayer;
-using Online_Assessment_Project.ViewModel;
+using OnlineAssessmentProject.DomainModel;
+using OnlineAssessmentProject.ServiceLayer;
+using OnlineAssessmentProject.ViewModel;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Online_Assessment_Project.Controllers
+namespace OnlineAssessmentProject.Controllers
 {
     public class AccountController : Controller
     {
-        IUserServices userService;
-        IRoleServices roleServices;
-        public AccountController()
+        readonly IUserService userService;
+        readonly IRoleService roleService;
+        public AccountController(IUserService userService, IRoleService roleService)
         {
-            userService = new UserServices();
-            roleServices = new RoleServices();
+            this.userService = userService;
+            this.roleService = roleService;
+            
         }
         // GET: Account
         [HttpGet]
-        
+
         public ActionResult Login()
         {
             return View();
@@ -29,58 +29,45 @@ namespace Online_Assessment_Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(UserViewModel user)
         {
-            
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                string name = User.Identity.Name;
+                ViewBag.name = name;
+                UserViewModel validatedData = userService.ValidateUser(user);
+                if (validatedData != null)
                 {
-                    string name = User.Identity.Name;
-                    ViewBag.name = name;
-                    UserViewModel validatedData = userService.ValidateUser(user);
-                    //if(user.EmailID == "manoj@gmail.com" && user.Password == "123")
-                    if (validatedData != null)
-                    {
-                        TempData["Login_successfull_msg"] = "You are successfully logged in";
-                        FormsAuthentication.SetAuthCookie(user.EmailID, true);
-                        return View("Display");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Invalid Email or Password");
-                        return View(user);
-                    }
+                    Session["CurrentUserID"] = validatedData.UserId;
+                    TempData["Login_successfull_msg"] = "You are successfully logged in";
+                    FormsAuthentication.SetAuthCookie(user.EmailID, true);
+                    return RedirectToAction("DisplayAvailableTest", "Test");
                 }
-
-
                 else
-                    return View();
-
-            
+                {
+                    ModelState.AddModelError("", "Invalid Email or Password");
+                    return View(user);
+                }
             }
 
+            else
+                return View();
 
-        
+        }
         [Authorize]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
-    
-    public ActionResult Display()
+
+        public ActionResult Display()
         {
             List<User> data = userService.Display();
             return View(data);
 
-
-            //var mapcategory = new MapperConfiguration(configurationExpression => { configurationExpression.CreateMap<List<User>,List<CreateViewModel>>(); });
-            //IMapper mapper = mapcategory.CreateMapper();
-            //var userData = mapper.Map< List < User > ,List<CreateViewModel>>(data);
-            //return View(data);
-            ////userService.Create(userData);
-            ////return RedirectToAction("Display");
         }
         public ActionResult Create()
         {
-            List<Online_Assessment_Project.DomainModel.Role> Roles = roleServices.Display();
+            List<OnlineAssessmentProject.DomainModel.Role> Roles = roleService.Display();
             ViewBag.Roles = new SelectList(Roles, "RoleId", "RoleName");
             return View();
         }
@@ -92,7 +79,7 @@ namespace Online_Assessment_Project.Controllers
             var mapcategory = new MapperConfiguration(configurationExpression => { configurationExpression.CreateMap<CreateViewModel, User>(); });
             IMapper mapper = mapcategory.CreateMapper();
             var userData = mapper.Map<CreateViewModel, User>(createviewmodel);
-            List<Online_Assessment_Project.DomainModel.Role> Roles = roleServices.Display();
+            List<OnlineAssessmentProject.DomainModel.Role> Roles = roleService.Display();
             ViewBag.Roles = new SelectList(Roles, "RoleId", "RoleName");
             userService.Create(userData);
             return RedirectToAction("Display");
@@ -107,7 +94,7 @@ namespace Online_Assessment_Project.Controllers
         }
         public ActionResult Edit(int Id)
         {
-            List<Online_Assessment_Project.DomainModel.Role> Roles = roleServices.Display();
+            List<OnlineAssessmentProject.DomainModel.Role> Roles = roleService.Display();
             ViewBag.Roles = new SelectList(Roles, "RoleId", "RoleName");
             User user = userService.Edit(Id);
 
@@ -121,7 +108,7 @@ namespace Online_Assessment_Project.Controllers
             var mapcategory = new MapperConfiguration(configurationExpression => { configurationExpression.CreateMap<CreateViewModel, User>(); });
             IMapper mapper = mapcategory.CreateMapper();
             var userData = mapper.Map<CreateViewModel, User>(createviewmodel);
-            List<Online_Assessment_Project.DomainModel.Role> Roles = roleServices.Display();
+            List<OnlineAssessmentProject.DomainModel.Role> Roles = roleService.Display();
             ViewBag.Roles = new SelectList(Roles, "RoleId", "RoleName");
             userService.Update(userData);
             TempData["Message"] = "updated";
