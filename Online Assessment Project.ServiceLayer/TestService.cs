@@ -12,24 +12,22 @@ namespace OnlineAssessmentProject.ServiceLayer
         IEnumerable<TestViewModel> DisplayAllDetails();
         void CreateNewTest(CreateTestViewModel testViewModel);
         void UpdateTest(EditTestViewModel editedData);
+        void DeleteTest(int testId);
     }
     public class TestService : ITestService
     {
         readonly ITestRepository testRepository;
         public TestService()
         {
-           testRepository = new TestRepository();
+            testRepository = new TestRepository();
         }
         public void CreateNewTest(CreateTestViewModel testViewModel)
         {
-            if (testViewModel != null)
-            {
 
-                var config = new MapperConfiguration(cfg => { cfg.CreateMap<CreateTestViewModel, Test>(); cfg.IgnoreUnmapped(); });
-                IMapper mapper = config.CreateMapper();
-                var test = mapper.Map<CreateTestViewModel, Test>(testViewModel);
-                testRepository.CreateNewTest(test);
-            }
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<CreateTestViewModel, Test>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            var test = mapper.Map<CreateTestViewModel, Test>(testViewModel);
+            testRepository.CreateNewTest(test);
 
         }
         public IEnumerable<TestViewModel> DisplayAllDetails()
@@ -37,7 +35,7 @@ namespace OnlineAssessmentProject.ServiceLayer
             IEnumerable<Test> test = testRepository.DisplayAllDetails();
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<Test, TestViewModel>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
-           IEnumerable<TestViewModel> allTests = mapper.Map<IEnumerable<Test>, IEnumerable<TestViewModel>>(test);
+            IEnumerable<TestViewModel> allTests = mapper.Map<IEnumerable<Test>, IEnumerable<TestViewModel>>(test);
             return allTests;
         }
         public void UpdateTest(EditTestViewModel editedData)
@@ -47,13 +45,18 @@ namespace OnlineAssessmentProject.ServiceLayer
             Test editTest = mapper.Map<EditTestViewModel, Test>(editedData);
             testRepository.UpdateTest(editTest);
         }
+        public void DeleteTest(int testId)
+        {
+            testRepository.DeleteTest(testId);
+        }
         public TestViewModel GetTestByTestId(int testId)
         {
-            Test test= testRepository.GetTestByTestId(testId);
+            Test test = testRepository.GetTestByTestId(testId);
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<Test, TestViewModel>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             TestViewModel OriginalData = mapper.Map<Test, TestViewModel>(test);
             return OriginalData;
         }
+
     }
 }

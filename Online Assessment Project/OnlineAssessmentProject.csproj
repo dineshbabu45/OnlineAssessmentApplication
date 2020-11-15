@@ -140,6 +140,7 @@
     <Content Include="Content\Images\online-learning-StudyUSA.jpg" />
     <Content Include="Content\Images\passing-NCLEX-exam-NYC.jpg" />
     <Content Include="Content\Images\Test.png" />
+    <Content Include="Content\Validation.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Log\Log.txt" />

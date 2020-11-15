@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineAssessmentProject.ViewModel
 {
@@ -13,18 +14,37 @@ namespace OnlineAssessmentProject.ViewModel
         public string Status { get; set; }
         [Required(ErrorMessage = "Date is required.")]
         [Display(Name = "Date")]
-        public string TestDate { get; set; }
+        public DateTime TestDate { get; set; }
         [Required(ErrorMessage = "Subject is required.")]
-        public string Subject { get; set; }
+        public Subject Subject { get; set; }
         [Required(ErrorMessage = "Choose Start Time")]
         [Display(Name = "Start Time")]
-        public string StartTime { get; set; }
+        public DateTime StartTime { get; set; }
         [Required(ErrorMessage = "Choose End Time")]
         [Display(Name = "End Time")]
-        public string EndTime { get; set; }
-
+        public DateTime EndTime { get; set; }
+        [Required]
+        public int Passcode { get; set; }
+        [Required]
+        public DateTime CreatedTime { get; set; }
+        [Required]
+        public DateTime ModifiedTime { get; set; }
+        [Required]
+        public int CreatedBy { get; set; }
+        [Required]
+        public int ModifiedBy { get; set; }
         [Required]
         public Grade Grade { get; set; }
-    }
 
+    }
+    public enum Grade
+    {
+        I = 1, II, III, IV, V, VI, VII, VIII, IX, X
+    }
+    public enum Subject
+    {
+        English = 1, Tamil, Maths, Science,
+        [Display(Name = "Computer Science")]
+        ComputerScience, Geography
+    }
 }

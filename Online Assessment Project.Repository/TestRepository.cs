@@ -11,6 +11,7 @@ namespace OnlineAssessmentProject.Repository
         void CreateNewTest(Test test);
         Test GetTestByTestId(int testId);
         void UpdateTest(Test editTest);
+        void DeleteTest(int testId);
     }
     public class TestRepository : ITestRepository
     {
@@ -21,7 +22,7 @@ namespace OnlineAssessmentProject.Repository
         }
         public void CreateNewTest(Test test) //To create new test
         {
-            test.CreatedTime = DateTime.Now.ToString();
+            
             db.Tests.Add(test);
             db.SaveChanges();
 
@@ -29,7 +30,7 @@ namespace OnlineAssessmentProject.Repository
 
         public void UpdateTest(Test editTest)
         {
-            editTest.ModifiedTime = DateTime.Now.ToString();
+            
             Test test = db.Tests.Find(editTest.TestId);
             if (test != null)
             {
@@ -45,6 +46,11 @@ namespace OnlineAssessmentProject.Repository
                 db.SaveChanges();
             }
 
+        }
+        public void DeleteTest(int testId)
+        {
+            db.Tests.Remove(GetTestByTestId(testId));
+            db.SaveChanges();
         }
         public Test GetTestByTestId(int testId)
         {

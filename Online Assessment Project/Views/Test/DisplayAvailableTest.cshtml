@@ -37,35 +37,41 @@
             @Html.DisplayNameFor(model => model.Grade)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Passcode)
+        </th>
+        <th>
             Action
         </th>
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TestName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Grade)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditTest", new { testId=item.TestId})
-                @Html.ActionLink("Delete", "Display", "Test", new { @class = "btn btn-primary" })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TestId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TestName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Subject)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EndTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Grade)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Passcode)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditTest", new { testId = item.TestId })
+        @Html.ActionLink("Delete", "DeleteTest", new { testId = item.TestId })
+    </td>
+</tr>
     }
 
 

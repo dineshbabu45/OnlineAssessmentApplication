@@ -22,7 +22,7 @@
                     </div>
                     @Html.LabelFor(Model => Model.Subject)
                     <div class="col-md-12">
-                        @Html.TextBoxFor(Model => Model.Subject, new { @class = "inputName", placeholder = "Subject" })
+                        @Html.EnumDropDownListFor(Model => Model.Subject, "Choose Subject", new { @class = "inputName"})
                         @Html.ValidationMessageFor(Model => Model.Subject, "", new { @class = "text-danger" })
                     </div>
                     @Html.LabelFor(Model => Model.Grade)
